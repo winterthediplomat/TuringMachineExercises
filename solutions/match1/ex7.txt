@@ -1,0 +1,22 @@
+#exercise 7 match 1
+
+#how it works:
+#at beginning, the automa puts as last char of tape
+#an X as separator.
+#then, if it reads an A, it deletes it
+#else (it reads a B) it deletes and rewrite it at
+#the end of the tape
+
+#at beginnig, I put at end a separator (X)
+(0, ab, 0, ab, >)
+(0, -, goBOT, X, <)
+(goBOT, [^-], goBOT, [^-], <)
+(goBOT, -, read, -, >)
+#I don't need A...
+(read, a, read, -, >)
+#but B!
+(read, b, read_b, -, >)
+(read_b, [^-], read_b, [^-], >)
+(read_b, -, goBOT, b, <)
+#If I read X... END!
+(read, x, END, -, -)

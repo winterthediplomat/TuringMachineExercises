@@ -1,0 +1,18 @@
+#exercise 3 match 1
+
+#how it works:
+#this Turing machine checks
+#the read character. If it is
+#a zero (0) if continues, else
+#blocks its execution and 
+#deletes all zeros.
+
+(0, 0, 0, 0, >)
+(0, 123456789, BOT_number, 123456789, <)
+#if I found only zero
+(0, -, BOT_zero, -, <)
+(BOT_zero, 0, BOT_zero, -, <)
+(BOT_zero, -, F, 0, -)
+#if there're another numbers
+(BOT_number, 0, BOT_number, -, <)
+(BOT_number, -, F, -, -)

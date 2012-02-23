@@ -1,0 +1,34 @@
+#A, B, ... G, con
+#do=C, re=D, … sol=G,
+#la=A, si=B.
+
+(0, A..G, 0, A..G, >)
+(0, -, goFirst, X, <)
+(goFirst, a..z., goFirst, a..z., <)
+(goFirst, -, first, -, >)
+
+(first, [A..G], write[A..G], -, >)
+(first, X, cancelLastPoint, -, >)
+(write[A..G], A..z., write[A..G], A..z., >)
+(writeA, -, A1, l, >)
+(A1, -, point, a, >)
+(writeB, -, B1, s, >)
+(B1, -, point, i, >)
+(writeC, -, C1, d, >)
+(C1, -, point, o, >)
+(writeD, -, D1, r, >)
+(D1, -, point, e, >)
+(writeE, -, E1, m, >)
+(E1, -, point, i, >)
+(writeF, -, F1, F, >)
+(F1, -, point, A, >)
+(writeG, -, G1, S, >)
+(G1, -, G2, O, >)
+(G2, -, point, L, >)
+
+(point, -, goFirst, ., <)
+
+(cancelLastPoint, a..z., cancelLastPoint, a..z., >)
+(cancelLastPoint, -, cancel, -, <)
+(cancel, ., F, -, -)
+

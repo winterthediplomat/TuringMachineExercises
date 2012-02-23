@@ -1,0 +1,10 @@
+#eexercise 5 match 2
+(0, A, 0, A, >)
+(0, -, goBOT, X, <)
+(goBOT, XAB, goBOT, XAB, <)
+(goBOT, -, BOT, -,>)
+(BOT, X, END, -, -)
+(BOT, A, goEOT, -, >)
+(goEOT, AXB, goEOT, AXB, >)
+(goEOT, -, 1, A, >)
+(1, -, goBOT, B, <)

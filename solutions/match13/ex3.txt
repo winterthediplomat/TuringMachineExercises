@@ -1,0 +1,48 @@
+#esercizio 3
+#gara 13
+
+#1)ordiniamo: T da una parte, 
+#  C dall'altra
+#2)verifichiamo il numero
+#  più alto cancellando
+#  gli estremi 
+
+#sorting
+(0, T, 0, T, >)
+(0, C, fw, C, >)
+(fw, T, bw, C, <)
+(bw, C, 0, T, >)
+(fw, C, 0, C, -)
+(fw, -, isSorted, -, <)
+(0, -, isSorted, -, <)
+
+(isSorted, C, isSorted, C, <)
+(isSorted, T, isFollowedByC, T, <)
+(isFollowedByC, C, notSorted, C, -)
+(isFollowedByC, T, isSorted, T, -)
+(isFollowedByC, -, isSorted, -, -) 
+(notSorted, TC, notSorted, TC, <)
+(notSorted, -, 0, -, >)
+
+(isSorted, -, count, -, >)
+
+#counting
+(count, C, moreC, -, >)
+(count, -, noMore, -, -)
+(count, T, readT, T, >)
+(readT, TC, readT, TC, >)
+(readT, -, last, -, <)
+(last, T, moreT, -, <)
+(last, C, goFirst, -, <)
+(last, -, noMore, -, -)
+(goFirst, TC, goFirst, TC, <)
+(goFirst, -, first, -, >)
+(first, TC, count, -, >)
+
+(moreC, C, moreC, -, >)
+(moreC, -, C, C, -)
+
+(moreT, T, moreT, -, <)
+(moreT, -, T, T, -)
+
+(noMore, -, P, P, -)

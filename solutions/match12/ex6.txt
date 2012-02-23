@@ -1,0 +1,40 @@
+#exercise 6 match 12
+(0, hoc2..9, 0, hoc2..9, >)
+(0, -, goFirstPreparing, x, <)
+(goFirstPreparing, hoc2..9x, goFirstPreparing, hoc2..9x, <)
+(goFirstPreparing, -, firstPrep, -, >)
+
+(firstPrep, HOC, X, HOC, <)
+(X, -, firstPrep, 1, -)
+(firstPrep, 0, cancelToX, -, >)
+(firstPrep, 1..9, copy, 0..8, >)
+(copy, [HOC2..9], copy[HOC2..9], [JFKS..Z], >)
+(copy[HOC2..9], hoc2..9x, copy[HOC2..9], hoc2..9x, >)
+(copy[HOC2..9], -, goFirst, [HOC2..9], <)
+
+(goFirst, hoc2..9, goFirst, hoc2..9, <)
+(goFirst, x, goFirstx, x, <)
+(goFirstX, hoc2..9, goFirstX, hoc2..9, <)
+(goFirstX, jfks..z, first, jfks..z, >)
+(first, x, convert, x, <)
+(first, hoc2..9, copy, hoc2..9, -)
+
+(convert, jfks..z0..9, convert, hoc2..90..9, <)
+(convert, -, firstPrep, -, >)
+
+(cancelToX, hoc2..9, cancelToX, -, >)
+(cancelToX, x, E, -, >)
+
+(E, hoc2..9, E, hoc2..9, >)
+(E, -, EgoFirst, X, <)
+(EgoFirst, hoc1..9x, EgoFirst, hoc1..9x, <)
+(EgoFirst, -, Efirst, -, >)
+
+(Efirst, [HOC], EreadNum[HOC], [HOC], >)
+(Efirst, X, F, -, -)
+(EreadNum[HOC], HOC1X, Ecancel[HOC], HOC-X, <)
+(EreadNum[HOC], 2..9, Ewrite[HOC], 1..8, >)
+
+(Ecancel[HOC], [HOC], Ewrite[HOC], -, >)
+(Ewrite[HOC], hocx2..9, Ewrite[HOC], hocx2..9, >)
+(Ewrite[HOC], -, EgoFirst, [HOC], <)

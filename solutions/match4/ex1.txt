@@ -1,0 +1,9 @@
+#exercise 1 match 4
+(0, 0, pair, -, >)
+(0, 1, odd, -, >)
+(odd, 0, odd, -, >)
+(odd, 1, pair, -, >)
+(odd, -, END, 1, -)
+(pair, 0, pair, -, >)
+(pair, 1, odd, -, >)
+(pair, -, END, 0, -)

@@ -1,0 +1,22 @@
+#exercise 8 match 2
+
+#how it works:
+#this is my  implementation 
+#of a sorting algorithm. I don't know 
+#how it costs computationally, but I think
+#a lot D:
+
+(0, A, 0, A, >)
+(0, B, isFollowedByA, B, >)
+(isFollowedByA, A, swap, B, <)
+(swap, B, 0, A, -)
+(isFollowedByA, B-, 0, B-, -)
+
+(0, -, isSorted, -, <)
+(isSorted, B, isSorted, B, <)
+(isSorted, A, isBeforeAnA, A, <)
+(isBeforeAnA, A-, isSorted, A-, -)
+(isBeforeAnA, B, notSorted, B, <)
+(isSorted, -, F, -, -)
+(notSorted, AB, notSorted, AB, <)
+(notSorted, -, 0, -, >)

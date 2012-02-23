@@ -1,0 +1,13 @@
+#gara 12
+#es1
+
+(0, 0..9, 0, 0..9, >)
+(0, -, lastNum, X, <)
+(lastNum, XU, lastNum, XU, <)
+(lastNum, 123456789, write, 012345678, >)
+(write, 0..9XU, write, 0..9XU, >)
+(write, -, lastNum, U, <)
+(lastNum, 0, lastNum, 9, <)
+(lastNum, -, cancel, -, >)
+(cancel, 0..9X, cancel, -, >)
+(cancel, U, F, U, -)

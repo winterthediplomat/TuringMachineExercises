@@ -1,0 +1,9 @@
+#exercise 1 match 10
+
+#how it works:
+#it's the tricky way
+#replaces the + with a 1.
+
+(0, 1, 1, -, >)
+(1, +, F, 1, -)
+(1, 1, 1, 1, >)

@@ -1,0 +1,27 @@
+(0, A, read_a, X, >)
+(0, B, read_b, X, >)
+(0, X, 0, -, >)
+(0, D, cancelEOT, -, >)
+#read_a
+(read_a, [^D], read_a, [^D], >)
+(read_a, D, read_a_after_D, D, >)
+(read_a_after_D, A, goBOT, X, <)
+(read_a_after_D, BX, read_a_after_D, BX, >)
+(read_a_after_D, -, cancelBOT, -, <)
+#read_b
+(read_b, [^D], read_b, [^D], >)
+(read_b, D, read_b_after_D, D, >)
+(read_b_after_D, B, goBOT, X, <)
+(read_b_after_D, AX, read_b_after_D, AX, >)
+(read_b_after_D, -, cancelBOT, -, <)
+#cancelBOT
+(cancelBOT, ABDX, cancelBOT, -, <)
+(cancelBOT, -, Fail, N, >)
+(Fail, -, FAIL, O, -)
+#cancelEOT
+(cancelEOT, ABDX, cancelEOT, -, >)
+(cancelEOT, -, Win, S, >)
+(Win, -, WIN, I, -)
+#goBOT
+(goBOT, ABDX, goBOT, ABDX, <)
+(goBOT, -, 0, -, >)

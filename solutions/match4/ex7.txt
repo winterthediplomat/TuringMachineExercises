@@ -1,0 +1,53 @@
+#exercise 7 match 4
+
+#how it works:
+#this automa finds the mid point with a
+#trick: replaces the first and the last digits of
+#the tape with symbols (reported after)
+#when the automa does not find first digit
+#it found the mid point.
+#this mid point is marked with an "S" and
+#all of symbols in the left side of the tape are
+#shifted to left.
+#then all symbols are converted to initial notation and,
+#by last digit, the comparison begin.
+
+
+#left symbols:
+#0:x 1:y
+#rigth symbols:
+#0:a 1:b
+#separator: s
+(0, 01, goLastDigit, xy, >)
+(0, ab, lastDigit, ab, <)
+(goLastDigit, 01, goLastDigit, 01, >)
+(goLastDigit, ab-, lastDigit, ab-, <)
+
+(lastDigit, 01, goFirstDigit, ab, <)
+(goFirstDigit, 01, goFirstDigit, 01, <)
+(goFirstDigit, xy, 0, xy, >)
+
+(lastDigit, [xy], shift[xy], s, <)
+(shifty, [xy], shift[xy], y, <)
+(shiftx, [xy], shift[xy], x, <)
+(shift[xy], -, convert, [xy], -)
+
+(convert, xysab, convert, 01s01, >)
+(convert, -, compare, -, <)
+
+(compare, [01], read[01], -, <)
+(compare, s, cancelW, -, <)
+(read[01], 01, read[01], 01, <)
+(read[01], s, read_after_s[01], s, <)
+(read_after_s[01], s, read_after_s[01], s, <)
+(read_after_s[01], [01], goLastW, s, >)
+(read_after_s[01], [10], goLastF, [10], >)
+
+(goLast[WF], 01s, goLast[WF], 01s, >)
+(goLastW, -, compare, -, <)
+(goLastF, -, cancelF, -, <)
+
+(cancelF, 01s, cancelF, -, <)
+(cancelW, s, cancelW, -, <)
+(cancelW, 01, cancelF, -, <)
+(cancel[WF], -, F, [10], <)

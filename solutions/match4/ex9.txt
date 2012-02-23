@@ -1,0 +1,27 @@
+#exercise 9 match 4
+
+#how it works:
+#not written
+
+
+(0, 0..9abc, 0, 0..9abc, >)
+(0, -, goFirst, x, <)
+
+(goFirst, 0..9abcx, goFirst, 0..9abcx, <)
+(goFirst, -, eval, -, >)
+
+(eval, 0..9, eval, 0..9, >)
+(eval, x, F, -, -)
+(eval, abc, dec, abc, <)
+(dec, 1..9, goFirstDigit, 0..8, <)
+(dec, 0, dec, 9, <)
+(dec, -, cleanZeros, -, >)
+(goFirstDigit, 0..9, goFirstDigit, 0..9, <)
+(goFirstDigit, -, cleanZeros, -, >)
+(cleanZeros, 0, cleanZeros, -, >)
+(cleanZeros, 1..9, goChar, 1..9, >)
+(cleanZeros, [abc], copy[abc], -, >)
+(goChar, 0..9, goChar, 0..9, >)
+(goChar, [abc], copy[abc], [abc], >)
+(copy[abc], 0..9abcx, copy[abc], 0..9abcx, >)
+(copy[abc], -, goFirst, [abc], <)

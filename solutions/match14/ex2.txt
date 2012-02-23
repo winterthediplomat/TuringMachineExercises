@@ -1,0 +1,30 @@
+#exercise 2 match 14
+#alphabet:
+#0 z
+#1 u
+#2 d
+#3 t
+#4 q
+#5 c
+#6 s
+#7 s
+#8 o
+#9 n
+#if s in tape
+#the number is unrebuildable
+(0, z, 0, 0, >)
+(0, u, 0, 1, >)
+(0, d, 0, 2, >)
+(0, t, 0, 3, >)
+(0, q, 0, 4, >)
+(0, c, 0, 5, >)
+(0, s, goEOT, s, >)
+(0, o, 0, 8, >)
+(0, n, 0, 9, >)
+(0, -, END, -, -)
+#goEOT
+(goEOT, [^-], goEOT, [^-], >)
+(goEOT, -, goBOT, -, <)
+(goBOT, [^-], goBOT, -, <)
+(goBOT, -, END, X, -)
+

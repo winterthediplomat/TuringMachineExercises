@@ -1,0 +1,10 @@
+#exercise 1 match 5
+
+#how it works:
+#this is a simple finite-state automa.
+
+(0, BCD, 0, BCD, >)
+(0, A, A, A, >)
+(A, A, A, A, >)
+(A, B, C, D, <)
+(C, A, 0, C, >)

@@ -1,0 +1,21 @@
+#esercizio 2
+#gara 13
+
+#la somma dei due
+#numeri va verificata se
+#pari o dispari
+
+(0, 0..9, 0, 0..9, >)
+(0, -, last, -, <)
+(last, [0..5], last[0..5], -, <)
+(last0, 012345, isEven, 012345, -)
+(last1, 012345, isEven, 123456, -)
+(last2, 012345, isEven, 234567, -)
+(last3, 012345, isEven, 345678, -)
+(last4, 012345, isEven, 456789, -)
+(last5, 01234, isEven, 56789, -)
+(last5, 5, isSurelyEven, P, -)
+
+#isEven
+(isEven, 02468, isSurelyEven, P, -)
+(isEven, 13579, isSurelyOdd, D, -)

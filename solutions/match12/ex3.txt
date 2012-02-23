@@ -1,0 +1,20 @@
+#exercise 3 match 12
+(0, HOC, verifyC, HOC, -)
+(verify[CHO], [CHO], goFirst[HOK], [CHO], <)
+(verifyC, HO, verifyC, HO, >)
+(verifyC, -, cancelF, -, <)
+(verifyH, CO, verifyH, CO, >)
+(verifyH, -, cancelF, -, <)
+(verifyO, HC, verifyO, HC, >)
+(verifyO, -, cancelF, -, <)
+
+(goFirst[HO], CHO, goFirst[HO], CHO, <)
+(goFirst[HO], -, verify[HO], -, >)
+(goFirstK, CHO, goFirstK, CHO, <)
+(goFirstK, -, cancelW, -, >)
+
+(cancel[WF], CHO, cancel[WF], -, [><])
+(cancelW, -, win1, S, >)
+(win1, -, WIN, I, -)
+(cancelF, -, fail1, N, >)
+(fail1, -, FAIL, O, -)

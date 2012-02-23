@@ -1,0 +1,21 @@
+(0, 0..9m, 0, 0..9m, >)
+(0, -, dec, -, <)
+
+
+(dec, 0, dec, 9, <)
+(dec, M, cancelNext, M, >)
+(cancelNext, 0..9, cancelNext, M, >)
+(cancelNext, -, goClearM, -, <)
+(dec, [1..9], goSub, [0..8], <)
+
+(goSub, [^M], goSub, [^M], <)
+(goSub, M, sub, M, <)
+
+(sub, [1..9], 0, [0..8], >)
+(sub, 0, sub, 9, <)
+
+(goClearM, [^M],goClearM, [^M],<)
+(goClearM, M, goClearM, -, <)
+(goClearM, -, cancelZeros, -, >)
+(cancelZeros, 0, cancelZeros, -, >)
+(cancelZeros, 1..9, STOP, 1..9, -) 

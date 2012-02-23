@@ -1,0 +1,11 @@
+(0, 0, cancelAll, -, >)
+(0, 1, STOP, -, -)
+(0, [2..7], read, [1..6], >)
+
+(read, [a..g], read[a..g], [a..g], >)
+(read[a..g], a..g, read[a..g], a..g, >)
+(read[a..g], -, goF, [a..g], <) 
+
+(cancelAll, a..g0..7, cancelAll, -, >)
+(goF, a..g, goF, a..g, <)
+(goF, 0..7, 0, 0..7, -)

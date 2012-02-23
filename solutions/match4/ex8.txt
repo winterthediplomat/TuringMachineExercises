@@ -1,0 +1,30 @@
+#exercise 8 match 4
+
+#how it works
+
+(0, [012], mark[012], -, >)
+(0, s, deleteInformation, -, >)
+
+(mark[012], 012, mark[012], 012, >)
+(mark[012], s, mark_s[012], s, >)
+(mark_s[012], 012s, mark_s[012], 012s, >)
+(mark_s[012], r, mark_r[012], r, >)
+#true marking
+(mark_r[012], [012], mark_r[012], x, >)
+(mark_r0, 12, mark_r0, 12, >)
+(mark_r1, 02, mark_r1, 02, >)
+(mark_r2, 01, mark_r2, 01, >)
+(mark_r[012], -, takeReplaceSymbol, -, <)
+
+(takeReplaceSymbol, 012xr, takeReplaceSymbol, 012xr, <)
+(takeReplaceSymbol, s, replace, s, >)
+(replace, [012], replace[012], s, >)
+(replace[012], 012r, replace[012], 012r, >)
+(replace[012], x, replace[012], [012], >)
+(replace[012], -, goFirst, -, <)
+
+(goFirst, 012rs, goFirst,012rs, <)
+(goFirst, -, 0, -, >)
+
+(deleteInformation, sr, deleteInformation, -, >)
+(deleteInformation, 012, F, 012, -)

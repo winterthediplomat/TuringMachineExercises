@@ -1,0 +1,19 @@
+#exercise 4 match 3
+
+#how it works:
+#this automa signs all chars in the tape that are equals
+#to the first char with an X and replaces all X with the
+#second char in the tape
+
+(0, [AB], pre_sign[AB], -, >)
+(pre_sign[AB], AB, sign[AB], AB, >)
+(signA, ABC, signA, XBC, >)
+(signB, BAC, signB, XAC, >)
+(sign[AB], -, goFirst, -, <)
+
+(goFirst, ABCX, goFirst, ABCX, <)
+(goFirst, -, pre_replace, -, >)
+
+(pre_replace, [AB], replace[AB], -, >)
+(replace[AB], X, replace[AB], [AB], >)
+(replace[AB], ABC, replace[AB], ABC, >)

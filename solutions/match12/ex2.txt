@@ -1,0 +1,16 @@
+#exercise 2 match 12
+(0, HOC, 0, HOC, >)
+(0, -, last, X, <)
+
+(last, [HOC], read[HOC], [JFK], >)
+(read[HOC], XHOCJFK, read[HOC], XHOCJFK, >)
+(read[HOC], -, goLast, [HOC], <)
+
+(goLast, HOC, goLast, HOC, <)
+(goLast, X, goLastX, X, <)
+(goLastX, JFK, goLastX, JFK, <)
+(goLastX, HOC, last, HOC, -)
+(goLastX, -, cancelX, -, >)
+
+(cancelX, XJFK, cancelX, -, >)
+(cancelX, HOC, F, HOC, -)

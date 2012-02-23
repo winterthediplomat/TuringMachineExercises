@@ -1,0 +1,14 @@
+#exercise 5 match 12
+(0, hoc2..9, 0, hoc2..9, >)
+(0, -, goFirst, X, <)
+(goFirst, hoc1..9x, goFirst, hoc1..9x, <)
+(goFirst, -, first, -, >)
+
+(first, [HOC], readNum[HOC], [HOC], >)
+(first, X, F, -, -)
+(readNum[HOC], HOC1X, cancel[HOC], HOC-X, <)
+(readNum[HOC], 2..9, write[HOC], 1..8, >)
+
+(cancel[HOC], [HOC], write[HOC], -, >)
+(write[HOC], hocx2..9, write[HOC], hocx2..9, >)
+(write[HOC], -, goFirst, [HOC], <)

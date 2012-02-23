@@ -1,0 +1,20 @@
+#exercise 4 match 5
+
+#how it works:
+#(we are assuming that the number on the tape is even)
+#This automa as handmade division by 2.
+#Try to do it by hand and you'll know 
+#that it's the way you solve divisions...
+
+
+(0, 13579, double, 01234, >)
+(0, 02468, 0, 01234, >)
+
+(double, 02468, 0, 56789, >)
+(double, 13579, double, 56789, >)
+
+#cleaning
+(0, -, goFirst, -, <)
+(goFirst, 0..9, goFirst, 0..9, <)
+(goFirst, -, first, -, >)
+(first, 0, F, -, -)

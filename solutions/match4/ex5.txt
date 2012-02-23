@@ -1,0 +1,83 @@
+#exercise 5 match 4
+#bubble sort in Turing Machine
+
+#120212311212300
+
+#main
+(0, 0, S0, -, >)
+(0, 1, S1, -, >)
+(0, 2, S2, -, >)
+(0, 3, S3, -, >)
+(0_NOC, 0, S0, -, >)
+(0_NOC, 1, S1, -, >)
+(0_NOC, 2, S2, -, >)
+(0_NOC, 3, S3, -, >)
+(0_NOC, -, F, -, -)
+(0, -, goBOT_control, -, <)
+#(goBOT, 0123, goBOT, 0123, <)
+#(goBOT, -, 0, -, >)
+
+#a way: when the algorithm arrives at the end
+#while scanning (end to begin) the tape, we control
+#if there is a number that is superior to next (viewing left to right)
+#number. 
+
+#goBOT_control
+(goBOT_control, 0, read_0, 0, <)
+(goBOT_control, 1, read_1, 1, <)
+(goBOT_control, 2, read_2, 2, <)
+(goBOT_control, 3, goBOT_control, 3, <)
+(read_0, 123, notSorted, 123, <)
+(read_0, 0, goBOT_control, 0, <)
+(read_0, -, goBOT_control, -, -)
+(read_1, 01, goBOT_control, 01, <)
+(read_1, 23, notSorted, 23, <)
+(read_1, -, notSorted, -, -)
+(read_2, 012, goBOT_control, 012, <)
+(read_2, 3, notSorted, 3, <)
+(read_2, -, notSorted, -, -)
+(notSorted, 0123, notSorted, 0123, <)
+(notSorted, -, 0, -, >)
+#possible false positive?
+(goBOT_control, -, F, -, -)
+
+#S0
+(S0, 0, write0_NOC, 0, <)
+(S0, 1, write0_NOC, 1, <)
+(S0, 2, write0_NOC, 2, <)
+(S0, 3, write0_NOC, 3, <)
+(S0, -, write0, -, <)
+
+
+#S1
+(S1, 1, write1_NOC, 1, <)
+(S1, 2, write1_NOC, 2, <)
+(S1, 3, write1_NOC, 3, <)
+(S1, 0, write0, 1, <)
+(S1, -, write1, -, <)
+
+#S2
+(S2, 2, write2_NOC, 2, <)
+(S2, 3, write2_NOC, 3, <)
+(S2, 1, write1, 2, <)
+(S2, 0, write0, 2, <)
+(S2, -, write2, -, <)
+
+#S3
+(S3, 0, write0, 3, <)
+(S3, 1, write1, 3, <)
+(S3, 2, write2, 3, <)
+(S3, 3, write3_NOC, 3, <)
+(S3, -, write3, -, <)
+
+#writeN
+(write0, -, 0, 0, >)
+(write1, -, 0, 1, >)
+(write2, -, 0, 2, >)
+(write3, -, 0, 3, >)
+
+#writeN_NOC
+(write0_NOC, -, 0_NOC, 0, >)
+(write1_NOC, -, 0_NOC, 1, >)
+(write2_NOC, -, 0_NOC, 2, >)
+(write3_NOC, -, 0_NOC, 3, >)

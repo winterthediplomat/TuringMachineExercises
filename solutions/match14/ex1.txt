@@ -1,0 +1,12 @@
+#exercise 1 match 14
+
+#how it works:
+#it goes to end of the tape, evaluates the 
+#last number, and leaves a P or a D
+#if number is even or odd.
+
+(0, 0..9, 0, 0..9, >)
+(0, -, last, -, <)
+(last, 0..9, cancel[PDPDPDPDPD], -, <)
+(cancel[PD], 0..9, cancel[PD], -, <)
+(cancel[PD], -, F, [PD], -)

@@ -1,0 +1,56 @@
+#exercise 7 match 5
+
+#how it works:
+#this automa recognizes sequences of [!, *, +] followed by 
+#one or two (for last two) character [0,1]
+#and calculates each boolean function related to [!, *, +]:
+#!=NOT, *=AND, +=OR
+#if the automa calculates * or + needs 
+#to cancel two values: the [*, +] and the first operand.
+#it is done running automa in the state "doubleShift", which
+#leaves on tape two X, shifts the first, reaches the second X
+#and passes on "shift" state to continue evaluation.
+#if the automa calculates ! needs
+#to cancel only the ! token, so only one X is left on 
+#tape and "shift" state does its job reading the character
+#before X and replace X with the previous char and vice versa,
+#while the automa does not reach the beginning of the tape.
+
+
+#R = O[R] (O looks too like 0)
+(0, [!*+], [NAR], [!*+], >)
+(0, 01, 0, 01, >)
+([NAR], [!*+], [NAR], [!*+], >)
+
+(N, 01, X, 10, <)
+(N, !*+, 0, !*+, -)
+(X, !*+, shift, XXX, <)
+(shift, [01!*+], read[01!*+], X, >)
+(read[01!*+], X, s1, [01!*+], <)
+(s1, X, shift, X, <)
+(shift, -, cancelX, -, >)
+(cancelX, X, cancelX, -, >)
+(cancelX, 01!*+, 0, 01!*+, -)
+
+(A, [01], A[01], [01], >)
+(A, !*+, 0, !*+, -)
+(A[01], !*+, 0,  !*+, -)
+(A0, 01, doubleShift, 00, <)
+(A1, 01, doubleShift, 01, <)
+
+(R, [01], R[01], 01, >)
+(R, !*+, 0, !*+, -)
+(R[01], !*+, 0, !*+, -)
+(R0, 01, doubleShift, 01, <)
+(R1, 01, doubleShift, 11, <)
+
+(doubleShift, 01, doubleShift2, XX, <)
+(doubleShift2, *+, dShift, XX, <)
+(dShift, [01!*+], dRead[01!*+], X, >)
+(dRead[01!*+], X, dS1, [01!*+], <)
+(dS1, X, dShift, X, <)
+(dShift, -, dCancelX, -, >)
+(dCancelX, X, dCancelX, -, >)
+(dCancelX, 01!*+, goX, 01!*+, >)
+(goX, 01!*+, goX, 01!*+, >)
+(goX, X, shift, X, <)

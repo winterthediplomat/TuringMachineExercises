@@ -1,0 +1,26 @@
+#esercizio 3 gara 3
+(0, 0..9, goEOT, 0..9, >)
+(goEOT, 0..9\-, goEOT, 0..9\-, >)
+(goEOT, -, EOT, -, <)
+#sottrazione prima del meno
+(sub, [0..9], goto_minus, [0..9], >)
+(goto_minus, \-, minus, \-, <)
+(goto_minus, [0..9], goto_minus, [0..9], >)
+(minus, [1..9], BOT, [0..8], -)
+(minus, 0, minus, 9, <)
+#sottrazione dopo il meno
+(goto_EOT, [0..9], goto_EOT, [0..9], >)
+(EOT, [1..9], BOT_minus, [0..8], -)
+(EOT, 0, F1, -, <)
+(F1, \-, ClearAllZero, -, <)
+#BOT
+(BOT, 0..9\-, BOT, 0..9\-, <)
+(BOT, -, 0, -, >)
+#BOT_minus
+(BOT_minus, 0..9\-, BOT_minus, 0..9\-, <)
+(BOT_minus, -, sub, -, >)
+#ClearAllZero
+(ClearAllZero, 0..9, ClearAllZero, 0..9, <)
+(ClearAllZero, -, Clearing, -, >)
+(Clearing, 0, Clearing, -, >)
+(Clearing, 1..9, F, 1..9, -)

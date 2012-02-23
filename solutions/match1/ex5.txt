@@ -1,0 +1,25 @@
+#esercizio 5 gara 1
+
+#how it works:
+#it looks for an A as first character of the tape
+#and a B as last, and deletes both them if automa finds that.
+#if automa reads a B, it replaces tape with a B
+#if automa does not find a B, it replaces tape with an A
+#if automa does not find both A and B, it writes C.
+#the tape contains a string formatted as 
+#A^nB^m
+#A if n>m, B if n<m, C if n==m
+
+(0, A, search_EOT, -, >)
+(search_EOT, AB, search_EOT, AB, >)
+(search_EOT, -, EOT, -, <)
+(EOT, A, FinalA1, -, <)
+(FinalA1, A, FinalA1, -, <)
+(FinalA1, -, FinalA, A, -)
+(EOT, B, search_BOT, -, <)
+(search_BOT, AB, search_BOT,AB, <)
+(search_BOT, -, 0, -, >)
+(0, B, FinalB1, -, >)
+(FinalB1, B, FinalB1, -, >)
+(FinalB1, -, FinalB, B, -)
+(0, -, FinalC, C, -)

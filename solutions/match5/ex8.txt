@@ -1,0 +1,24 @@
+#0123456789
+#abcdefghij
+(0, A..J0..9+, 0, A..J0..9+, >)
+(0, -, dec, -, <)
+
+(dec, 1..9, goInc, 0..8, <)
+(dec, 0, setLetter, -, <)
+(dec, +, convertAll, -, <)
+
+(setLetter, 0..9, setLetter, 0..9, <)
+(setLetter, +, goNum, +, <)
+(goNum, [A..J], goNum, [A..J], <)
+(goNum, [0..9], 0, [A..J], >)
+
+(goInc, 0..9, goInc, 0..9, <)
+(goInc, +, searchNum, +, <)
+(searchNum, A..J, searchNum, A..J, <)
+(searchNum, 0..9, inc, 0..9, -)
+
+(inc, [0..8], 0, [1..9], >)
+(inc, 9, inc, 0, <)
+(inc, -, 0, 1, >) 
+
+(convertAll, [A..J], convertAll, [0..9], <)

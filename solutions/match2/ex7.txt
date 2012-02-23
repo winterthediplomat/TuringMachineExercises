@@ -1,0 +1,17 @@
+#exercise 7 match 2
+
+#how it works:
+#it is a normal finite-state automa
+#that recognizes a sequence ABC and
+#replaces it with ABC.
+
+(0, A, A, A, >)
+(0, BC, 0, BC, >)
+
+(A, B, B, B, >)
+(A, AC, 0, AC, -)
+
+(B, C, C, B, <)
+(B, AB, 0, AB, -)
+(C, B, 0, C, >)
+(C, A, 0, A, -)

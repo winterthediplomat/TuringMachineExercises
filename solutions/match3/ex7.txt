@@ -1,0 +1,25 @@
+#esercizio 7 gara 3
+(0, 0..9, clearAllZero, 0..9, -)
+#clearAllZero
+(clearAllZero, 0, clearAllZero, -, >)
+(clearAllZero, 1..9, goEOT, 1..9, >)
+(clearAllZero, -, win1, S, >)
+#goEOT
+(goEOT, [^-], goEOT, [^-], >)
+(goEOT, -, sub, -, <)
+#sub (sottrazione)
+(sub, 3..9, goBOT, 0..6, <)
+(sub, 0..2, riporto, 7..9, <)
+#riporto
+(riporto, 0, riporto, 9, <)
+(riporto, 1..9, goBOT, 0..8, <)
+(riporto, -, fail1, -, >)
+#goBOT
+(goBOT, 0..9, goBOT, 0..9, <)
+(goBOT, -, clearAllZero, -, >)
+#win1
+(win1, -, WIN, I, -)
+#fail1
+(fail1, [^-], fail1, -, >)
+(fail1, -, fail2, N, >)
+(fail2, -, FAIL, O, -)

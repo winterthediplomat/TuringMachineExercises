@@ -1,0 +1,17 @@
+(0, +\-0..9, valid, -, >)
+(0, [^+\-0..9], cancelAll, -, >)
+(valid, ., onlyOnePoint, -, >)
+(valid, 0..9, valid, -, >)
+(valid, +\-, cancelAll, -, >)
+(onlyOnePoint, 0..9, onlyOnePoint, -, >)
+(onlyOnePoint, -, VALID, -, -)
+(onlyOnePoint, +\-., cancelAll, -, >)
+
+#VALID
+(VALID, -, S, S, >)
+(S, -, WIN, I, -)
+
+#cancelAll
+(cancelAll, [^-], cancelAll, -, >)
+(cancelAll, -, fail1, n, >)
+(fail1, -, FAIL, o, -)

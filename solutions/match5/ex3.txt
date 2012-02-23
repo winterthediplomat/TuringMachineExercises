@@ -1,0 +1,41 @@
+#exercise 3 match 5
+
+#how it works:
+#it compares each character before and after
+#the star (*), replacing the char after the star
+#with a W if they're equals, else with an F.
+#if the automa, in the state 0, reads the star (*)
+#counts all W. if it counts 12+ W then it leaves
+#a SI on the tape, else a NO
+
+(0, [12X], read[12X], -, >)
+(0, *, count0, -, >)
+(read[12x], 12x, read[12x], 12x, >)
+(read[12x], *, readStar[12x], *, >)
+(readStar[12x], WF, readStar[12x], WF, >)
+(readStar[12x], [12x], goFirst, W, <)
+(readStar1, 2x, goFirst, F, <)
+(readStar2, 1x, goFirst, F, <)
+(readStarx, 12, goFirst, F, <)
+
+(goFirst, 12xwf*, goFirst, 12xwf*, <)
+(goFirst, -, 0, -, >)
+
+(count[012345678], W, count[123456789], -, >)
+(count[0123456789], -, fail, N, >)
+(count[0123456789], F, count[0123456789], -, >)
+(count9, W, count10, -, >)
+(count10, W, count11, -, >)
+(count11, W, count12, -, >)
+(count12, W, count13, -, >)
+(count9, W, count10, -, >)
+(count10, F, count10, -, >)
+(count11, F, count11, -, >)
+(count12, F, count12, -, >)
+(count10, -, fail, N, >)
+(count11, -, fail, N, >)
+(count12, -, win, S, >)
+(count13, -, win, S, >)
+
+(fail, -, FAIL, o, -)
+(win, -, WIN, i, -) 

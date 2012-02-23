@@ -1,0 +1,18 @@
+#exercise 5 match 13
+
+(0, A, jmp1, -, >)
+(jmp1, X, foot, A, >)
+(jmp1, #., jmp2, #., >)
+(jmp[12], SP, F, SP, <)
+(jmp2, X., jump, AA, >)
+(jmp2, #, back, #, <)
+(back, ., foot, A, >)
+
+(foot, #.XSP, foot, #.XSP, >)
+(jump, #.XSP, jump, #.XSP, >)
+(foot, -, goFirstSymbol, P, <)
+(jump, -, goFirstSymbol, S, <)
+(goFirstSymbol, #.XSPA, goFirstSymbol, #.XSPA, <)
+(goFirstSymbol, -, goAlan, -, >)
+(goAlan, #.XSP, goAlan, -, >)
+(goAlan, A, 0, A, -)

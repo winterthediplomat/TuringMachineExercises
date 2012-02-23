@@ -1,0 +1,11 @@
+#exercise 1 match 3
+(0, 1..9, 0, 1..9, >)
+(0, 0, END1, -, >)
+(END1, X, END, -, -)
+(0, -, sub, X, <)
+(sub, 1..9, writeA, 0..8, >)
+(sub, 0, 0, 0, -)
+(writeA, XA, writeA, XA, >)
+(writeA, -, goBOT, A, <)
+(goBOT, ax0..9, goBOT, ax0..9, <)
+(goBOT, -, sub, -, >)

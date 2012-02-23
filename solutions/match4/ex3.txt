@@ -1,0 +1,22 @@
+#exercise 3 match 4
+
+#how it works:
+#this automa puts at the end of tape
+#a separator ("X"), that is used to 
+#recognize the beginning of the copied sequence.
+#then the automa reads each digit in the initial tape.
+
+(0, 01, 0, 01, >)
+(0, -, goFirst, x, <)
+(goFirst, 01x, goFirst, 01x, <)
+(goFirst, -, first, -, >)
+
+#stop
+(first, x, STOP, -, -)
+
+#evalutation
+(first, [01], read[01], -, >)
+(read[01], 01x, read[01], 01x, >)
+(read0, -, goFirst, 0, <)
+(read1, -, onceAgain, 1, >)
+(onceAgain, -, goFirst, 1, <)

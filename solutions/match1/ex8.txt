@@ -1,0 +1,22 @@
+#exercise 8 match 1
+
+#how it works:
+#it puts, at the end of tape, 
+#a separator (x), returns to
+#the first character of tape and
+#begin the evaluation.
+#the evaluation starts in state "first0" and
+#continues in "first1".
+#the number after "first" is a  flag
+#checking it the automa can choose
+#if it has to eliminate the character (without rewriting) or
+#has to rewrite it at end of tape.
+
+(0, a, 0, a, >)
+(0, -, goF, x, <)
+(go[LF], abx, go[LF], abx, [><])
+(goF, -, first0, -, >)
+(goL, -, goF, a, <)
+(first0, a, first1, -, >)
+(first1, a, goL, -, >)
+(first[01], x, F, -, -)

@@ -1,0 +1,13 @@
+(0, [01], [01], [01], >)
+(1, 01, 1, 01, >)
+
+(0, -, STOP, -, -)
+(1, -, goFirst, -, <)
+(goFirst, 0..1, goFirst, 0..1, <)
+(goFirst, -, check, -, >)
+
+(check, 1, STOP, 1, -)
+(check, 0, goWrite, -, >)
+
+(goWrite, 0..1, goWrite, 0..1, >)
+(goWrite, -, goFirst, 0, <)

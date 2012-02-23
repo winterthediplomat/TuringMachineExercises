@@ -1,0 +1,12 @@
+#esercizio 3 gara 2
+(0, AB, ctrlDX, AB, >)
+(ctrlDX, -, F, -, -)
+(ctrlDX, AB, goback, AB, <)
+(goback, AB, gotoEOT, --, >)
+(gotoEOT, AB, gotoEOT, AB, >)
+(gotoEOT, -, ctrlSX1, -, <)
+(ctrlSX1, AB, ctrlSX, AB,<)
+(ctrlSX, AB, goforward, AB, >)
+(goforward, AB, gotoBOT, -, <)
+(gotoBOT, AB, gotoBOT, AB, <)
+(gotoBOT, -, 0, -, >)

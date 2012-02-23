@@ -1,0 +1,12 @@
+#Do=C, Re=D, Mi=E, Fa=F,
+#Sol=G, La=A, Si=B
+
+(0, a..z, 0, a..z, >)
+(0, -, goF, $, <)
+(goF, a..z$, goF, a..z$, <)
+(goF, -, read, -, >)
+(read, [a..z], read, -, >)
+(read, [a..g], read[a..g], -, >)
+(read[a..g], a..z$, read[a..g], a..z$, >)
+(read[a..g], -, goF, [a..g], <)
+(read, $, STOP, -, -)

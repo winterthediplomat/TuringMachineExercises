@@ -1,0 +1,26 @@
+(0, [^\}\]], 0, [^\}\]], >)
+(0, [\]\}], search[QG], X, <)
+(0, -, yep, S, >)
+(yep, -, YEP, I, -)
+
+(searchQ, [^\[], eotcancel, [^\[], >)
+(searchG, [^\[], eotcancel, [^\[], >)
+(search[QG], [\[\{], compatta, X, <)
+
+(eotcancel, [^-],eotcancel, [^-], >)
+(eotcancel, -, cancelAll, -, <)
+(cancelAll, [^-], cancelAll, -, <)
+(cancelAll, -, nope, N, >)
+(nope, -, NOPE, O, -)
+
+(compatta, [\[\{], copy[\[\{], X, >)
+(copy[\[\{], X, compatta, [\[\{], <)
+(compatta, X, compatta, X, <)
+(compatta, -, cancelBack, -, >)
+(cancelBack, X, searchX, -, >) 
+(searchX, [^X-], searchX, [^X-], >)
+(searchX, X, compatta, X, <)
+(searchX, -, goBOT, -, <)
+
+(goBOT, [^-], goBOT, [^-], <)
+(goBOT, -, 0, -, >)

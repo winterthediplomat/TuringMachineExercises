@@ -1,0 +1,9 @@
+#exercise 1 match 1
+
+#how it works:
+#it goes to the first space (that is also the end 
+#of the tape) and adds two 0 (zero).
+
+(0, 0123456789, 0, 0123456789, >)
+(0, -, 1, 0, >)
+(1, -, F, 0, -)

@@ -1,0 +1,26 @@
+#exercise 2 match 1
+
+#how it works:
+#it reads the tape from beginning to the end
+#and checks if the read character is a B and
+#changes its state (1) if B were found.
+#when it reaches the end of the tape
+#if deletes all of characters on tape
+#and leaves a T if B was found, F if not.
+#a shorter version can be:
+#(0, A, 0, -, >)
+#(0, B, 1, -, >)
+#(1, AB, 1, --, >)
+#([01], -, F, [FT], -)
+
+(0, A, 0, A, >)
+(0, B, 1, B, >)
+(1, AB, 1, AB, >)
+#if I've found it
+(1, -, BOTfound, -, <)
+(BOTfound, AB , BOTfound, --, <)
+(BOTfound, -, F, T, -)
+#if not 
+(0, -, BOTnotfound, -, <)
+(BOTnotfound, AB, BOTnotfound, --, <)
+(BOTnotfound, -, F, F, -)

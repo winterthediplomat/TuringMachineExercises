@@ -1,0 +1,32 @@
+#exercise 6 match 14
+
+#thanks to Massimo Benedetti
+#for the algorithm
+
+([01], S, goSecondN[01], C, >)
+(goSecondN[01], SC, goSecondN[01], SC, >)
+(goSecondN[01], N, goSecondN[12], N, >)
+(goSecondN[01], -, goW, -, <)
+(goSecondN2, S, goFirstS, C, <)
+(goSecondN2, C, goSecondN2, C, >)
+(goSecondN2, N, goLast, N, >)
+
+(goFirstS, SNC, goFirstS, SNC, <)
+(goFirstS, -, firstS0, -, >)
+(firstS[01], C, firstS[01], C, >)
+(firstS[01], N, firstS[12], N, >)
+(firstS[01], S, [01], S, -)
+(firstS2, C, firstS2, C, >)
+(firstS2, S, goLast, S, >)
+(firstS2, N, convertCtoS, N, <)
+(firstS2, -, goW, -, <)
+
+(goLast, SN, goLast, SN, >)
+(goLast, -, goF, -, <)
+(go[WF], SNC, go[WF], -, <)
+(go[WF], -, [WF], [TF], -)
+
+(convertCtoS, CN, convertCtoS, SN, <)
+(convertCtoS, -, cancelN, -, >)
+(cancelN, S, cancelN, -, >)
+(cancelN, N, 0, -, >)

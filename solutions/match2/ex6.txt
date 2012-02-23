@@ -1,0 +1,28 @@
+#exercise 6 match 2
+
+#how it works:
+#it replaces each extreme character
+#with a X or a Y (if it is at left or rigth)
+#if, in 0 (zero) state, we read Y we know
+#we have reached the mid point of the tape.
+#we replace the Y and the near X with a B,
+#then replace other X and Y with A.
+
+(0, A, goLast, X, >)
+(0, -, Bx, B, >)
+(Bx, -, FINISH, B, -)
+(goLast, ABX, goLast, ABX, >)
+(goLast, Y-, last, Y-, <)
+(last, A, goFirst, Y, <)
+(goFirst, ABY, goFirst, ABY, <)
+(goFirst, X, 0, X, >)
+
+#si devono aggiungere le B
+#quando leggo Y nello stato
+#0 (zero)
+(0, Y, addB, B, <)
+(addB, X, XtoA, B, <)
+
+([XY]toA, ABXY, [XY]toA, ABAA, >><>)
+(XtoA, -, YtoA, A, >)
+(YtoA, -, FINISH, A, -)

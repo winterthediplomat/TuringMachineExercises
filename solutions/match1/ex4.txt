@@ -1,0 +1,39 @@
+#exercise 4 match 1
+
+#how it works:
+#it reads the first character and match it
+#with the last one. if they're equals,
+#it continues its execution while in state 0 or in search_[AB]
+#it finds a blank, and leaves a SI sequence on the tape.
+#if they're not equals, it replaces all with a NO sequence
+#('si' and 'no' are Italian for 'yes' and 'no')
+
+(0, A, search_A, -, >)
+(0, B, search_B, -, >)
+#if blank write SI
+(0, -, Palindrome1, S, >)
+(Palindrome1, -, Palindrome, I, -)
+#if A or B 
+(search_A, AB, search_A_EOT, AB, >)
+(search_B, AB, search_B_EOT, AB, >)
+#if blank it's a palindrome
+(search_A, -, Palindrome1, S, >)
+(search_B, -, Palindrome1, S, >)
+#if found char go on
+(search_A_EOT, AB, search_A_EOT, AB, >)
+(search_B_EOT, AB, search_B_EOT, AB, >)
+#if found blank go back 
+(search_A_EOT, -, search_A_after_EOT, -, <)
+(search_B_EOT, -, search_B_after_EOT, -, <)
+#if search A and found A or search B and found B
+(search_A_after_EOT, A, going_to_BOT, -, <)
+(search_B_after_EOT, B, going_to_BOT, -, <)
+(search_A_after_EOT, B, delete_all_to_BOT, -, <)
+(search_B_after_EOT, A, delete_all_to_BOT, -, <)
+#going_to_BOT
+(going_to_BOT, AB, going_to_BOT, -, <)
+(going_to_BOT, -, 0, -, >)
+#delete_all_to_BOT
+(delete_all_to_BOT, AB, delete_all_to_BOT, AB, <)
+(delete_all_to_BOT, -, NotPalindrome1, N, >)
+(NotPalindrome1, -, NotPalindrome, O, -)

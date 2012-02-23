@@ -1,0 +1,27 @@
+(0, 1..9, 1, 1..9, >)
+(1, 0..9, 1, 0..9, >)
+([01], -, control, -, <)
+(control, 0..5, divide, 0..5, -)
+(control, 6..9, divideMore, 6..9, -)
+(0, 0\-, 0, -\-, >)
+([01], ., aFloat, ., >)
+(aFloat, 0..9, aFloat, 0..9, >)
+(aFloat, -, aFloatCleaning, -, <)
+(aFloatCleaning, 0..9, aFloatCleaning, -, <)
+(aFloatCleaning, ., divideMore, -, <)
+(divide, 0..9, F, -, <)
+(divide, -, F, 0, <) #in case of zero
+(divideMore, 0..9, add, -, <)
+
+#F
+(F, \-, adjustforASign, -, >)
+(adjustforASign, -, STOP, 0, -)
+(F, -, adjust, -, >)
+(adjust, -, STOP, 0, -)
+
+#add
+(add, 0..8, F, 1..9, -)
+(add, 9, add, 0, <)
+(add, \-, rewriteSign, 1, <)
+(rewriteSign, -, F, \-, <)
+(add, -, F, 1, -)

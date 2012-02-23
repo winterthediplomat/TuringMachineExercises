@@ -1,0 +1,17 @@
+(0, 1..9, 1, 1..9, >)
+(1, 0..9, 1, 0..9, >)
+([01], -, divide, -, <)
+(0, 0\-, 0, -\-, >)
+([01], ., aFloat, ., >)
+(aFloat, 0..9, aFloat, 0..9, >)
+(aFloat, -, aFloatCleaning, -, <)
+(aFloatCleaning, 0..9, aFloatCleaning, -, <)
+(aFloatCleaning, ., divide, -, <)
+(divide, 0..9, F, -, <)
+(divide, -, F, 0, <) #in case of zero
+
+#F
+(F, \-, adjustforASign, -, >)
+(adjustforASign, -, STOP, 0, -)
+(F, -, adjust, -, >)
+(adjust, -, STOP, 0, -)

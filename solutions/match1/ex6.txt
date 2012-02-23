@@ -1,0 +1,40 @@
+#exercise 6 match 1
+
+#how it works:
+#this automa looks for, in a tape formatted as
+#ScTc where S and T can be equal, S and T and 
+#checks if S and T are equals.
+#it reads each char in S, and looks if its 
+#corrispondent in t is equal.  
+
+(0, A, read_A, X, >)
+(0, B, read_B, X, >)
+(0, C, cancelWIN, C, <)
+(0, X, 0, -, >)
+(read_A, ABX, read_A, ABX, >)
+(read_A, C, read_a_after_c, C, >)
+(read_a_after_c, A, goBOT, X, <)
+(read_a_after_c, x, read_a_after_c, x, >)
+(read_a_after_c, b, cancelFAIL, W, <)
+(read_a_after_c, c, cancelWIN, -, <)
+(read_B, ABX, read_B, ABX, >)
+(read_B, C, read_b_after_c, C, >)
+(read_b_after_c, B, goBOT, X, <)
+(read_b_after_c, x, read_b_after_c, x, >)
+(read_b_after_c, A, cancelFAIL, W, <)
+(read_b_after_c, c, cancelWIN, -, <)
+#goBOT
+(goBOT, [^-], goBOT, [^-], <)
+(goBOT, -, 0, -, >)
+#cancelFAIL
+(cancelFAIL, [^-], cancelFAIL, [^-], <)
+(cancelFAIL, -, fail1, -, >)
+(fail1, [^-], fail1, -, >)
+(fail1, -, fail2, N, >)
+(fail2, -, FAIL, O, -)
+#cancelWIN 
+(cancelWIN, [^-], cancelWIN, [^-], <)
+(cancelWIN, -, WIN1, -, >)
+(WIN1, [^-], WIN1, -, >)
+(WIN1, -, WIN2, S, >)
+(WIN2, -, WIN, I, -)

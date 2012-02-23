@@ -1,0 +1,65 @@
+#exercise 6 match 4
+
+#how it works:
+#this automa copies the initial tape twice,
+#each copy is divided by a '+' char.
+#when the initial tape is deleted, the automa
+#begin to add to first operand the second.
+#pay attention: the second is equal to the first,
+#but the last operand has a '0' at the end
+#therefore computational complexity of this algorithm
+#is O(10*N)
+#to have O(N) you may copy the first operand to transform
+#it in the second or applying the automa at inverted operands
+
+(0, 0..9, 0, 0..9, >)
+(0, -, 1, =, >)
+(1, -, goFirst, +, <)
+(goFirst, 0..9=+, goFirst, 0..9=+, <)
+(goFirst, -, first, -, >)
+
+(first, [0..9], read[0..9], -, >)
+(first, =, goLast, -, >)
+(read[0..9], 0..9=, read[0..9], 0..9=, >)
+(read[0..9], +, shift+, [0..9], >)
+(shift+, [0..9], shift[0..9], +, >)
+(shift[0..9+], [0..9+], shift[0..9+], [0..9+], >)
+(shift[0..9+], -, goPlus, [0..9+], <)
+(goPlus, 0..9, goPlus, 0..9, <)
+#something goes wrong...
+(goPlus, =, foundEqual, =, >)
+(foundEqual, 0..9, foundEqual, 0..9, >)
+(foundEqual, +, goPlus, +, -)
+#no problem...
+(goPlus, +, read2, +, <)
+(read2, [0..9], read2[0..9], [0..9], >)
+(read2[0..9], 0..9+, read2[0..9], 0..9+, >)
+(read2[0..9], -, goFirst, [0..9], <)
+
+(goLast, 0..9=+, goLast, 0..9=+, >)
+(goLast, -,  sub, 0, -)
+
+(sub, 1..9, goAdd, 0..8, <)
+(sub, 0, sub, 9, <)
+(sub, +, goFirstPlus, +, <)
+
+(goAdd, 0..9, goAdd, 0..9, <)
+(goAdd, +, clearZeros, +, >)
+(clearZeros, 0, clearZeros, +, >)
+(clearZeros, 1..9, goFirstOperand, 1..9, <)
+(clearZeros, -, cancelPlus, -, <)
+(cancelPlus, +, cancelPlus, -, <)
+(cancelPlus, 0..9, lastAdd, 0..9, -)
+(goFirstOperand, +, goFirstOperand, +, <)
+(goFirstOperand, 0..9, add, 0..9, -)
+
+(add, 0..8, goSub, 1..9, >)
+(add, 9, add, 0, <)
+(add, -, goSub, 1, >)
+
+(goSub, 0..9+, goSub, 0..9+, >)
+(goSub, -, sub, -, <)
+
+(lastAdd, 0..8, F, 1..9, -)
+(lastAdd, 9, lastAdd, 0, <)
+(lastAdd, -, F, 1, -)

@@ -1,0 +1,13 @@
+#atcg
+#tagc
+
+(0, [ATCG], write[6789], [0123], >)
+(write[6789], a..z6789, write[6789], a..z6789, >)
+(write[6789], -, goBack, [6789], <)
+(goBack, 6789a..z, goBack, 6789a..z, <)
+(goBack, 0123, 0, 0123, >)  
+
+(0, 6789, goConv, 6789, <)
+(goConv, 0..9, goConv, 0..9, <)
+(goConv, -, conv, -, >)
+(conv, [01236789], conv, [ATCGTAGC], >)

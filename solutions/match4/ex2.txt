@@ -1,0 +1,20 @@
+#exercise 2 match 4
+
+#how it works:
+#it looks for a 0 or a 1
+#if it does not find any of them
+#it leaves on tape a 1 (and deletes all of "X")
+#else leaves a 0
+
+(0, 0, read0, x, >)
+(0, x, 0, x, >)
+(0, -, cancel, 1, <)
+(read0, 0x, read0, 0x, >)
+(read0, -, cancel, 0, <)
+(read0, 1, read1, x, >)
+(read1, 1x, read1, 1x, >)
+(read1, -, cancel, 0, <)
+(read1, 0, goFirst, x, -)
+(goFirst, 01x, goFirst, 01x, <)
+(goFirst, -, 0, -, >)
+(cancel, 01x, cancel, -, <)

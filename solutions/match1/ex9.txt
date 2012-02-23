@@ -1,0 +1,23 @@
+(0, AB, 0, AB, >)
+(0, -, goFirst0, %, <)
+
+(first, [AB], read[AB], X, >)
+(readA, A, readA, X, >)
+(readA, B, bwA, B, <)
+(readB, B, readB, X, >)
+(readB, A, bwB, A, <)
+(read[AB], %, f[AB], %, <)
+
+(f[AB], X, goFirst, [AB], <)
+(bw[AB], X, read[BA], [AB], >)
+
+(goFirst0, ABX, goFirst0, ABX, <)
+(goFirst0, -, first, -, >)
+
+(goFirst, ABX%, goFirst, ABX%, <)
+(goFirst, -, goToFirstChar, -, >)
+(goToFirstChar, %, F, -, -)
+(goToFirstChar, X, goToFirstChar, -, >)
+(goToFirstChar, [AB], write[AB], -, >)
+(write[AB], ABX%, write[AB], ABX%, >)
+(write[AB], -,  goFirst, [AB], <) 

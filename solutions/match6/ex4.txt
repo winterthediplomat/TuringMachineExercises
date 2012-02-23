@@ -1,0 +1,27 @@
+(0, a..z, 1, a..z, <)
+(1, -, check, 0, >)
+
+(check, [atcg], check[atcg], Y, >)
+(check[atcg], a..z, check[atcg], a..z, >)
+(check[atcg], X, continue[atcg], X, >)
+(continue[atcg], X, continue[atcg], X, >)
+(continue[atcg], {atcg}, goWrong, X, <)
+(continue[atcg], [atcg], goFirstGene, X, <)
+
+(goFirstGene, Xatcg, goFirstGene, Xatcg, <)
+(goFirstGene, Y, check, Y, >)
+(check, X, cancelAll, X, <)
+
+(goWrong, a..z, goWrong, a..z, <)
+(goWrong, 0..9, inc, 0..9, -)
+(inc, [0..8-], goCheck, [1..91], >)
+(inc, 9, inc, 0, <)
+
+(goCheck, 0..9, goCheck, 0..9, >)
+(goCheck, Y, goY, Y, >)
+(goY, Y, goY, Y, >)
+(goY, atcg, check, atcg, -)
+(goY, X, cancelAll, X, <)
+(cancelAll, [^0..9], cancelAll, [^0..9], <)
+(cancelAll, 0..9, cancel, 0..9, >)
+(cancel, xyatcg, cancel, -, >)

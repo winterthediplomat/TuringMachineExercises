@@ -1,0 +1,17 @@
+#contiamo prima le A
+#poi le B
+(0, [ab], a[10], [ab], >)
+(a1, [ab], a[01], [ab], >)
+(a0, [ab], a[10], [ab], >)
+(a[01], -, b0, [01], <)
+(b0, [ab], b[01], [ab], <)
+(b1, [ab], b[10], [ab], <)
+(b[01], -, cancel[NS], -, >)
+
+(cancel[NS], ab, cancel[NS], -, >)
+(cancelN, 01, No1, N, >)
+(No1, -, stop, O, -)
+(cancelS, 1, No1, N, >)
+(cancelS, 0, Si1, S, >)
+(Si1, -, stop, i, -)
+

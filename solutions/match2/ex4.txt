@@ -1,0 +1,24 @@
+#exercise 4 match 2
+(0, ab, putX, ab, >)
+(putX, ab, putX, ab, >)
+(putX, -, EOT, X, <)
+(EOT, B, readB, -, >)
+(readB, XAB, readB, XAB, >)
+(readB, -, shift, B, <)
+(EOT, A, readA, -, >)
+(readA, XAB, readA, XAB, >)
+(readA, -, shift, A, <)
+#shift
+(shift, XAB, shift, XAB, <)
+(shift, -, shift1, -, <)
+(shift1, A, shiftA, -, >)
+(shift1, B, shiftB, -, >)
+(shiftA, -, shift, A, <)
+(shiftB, -, shift, B, <)
+(shift1, -, goX, -, >)
+(goX, AB-, goX, AB-, >)
+(goX, X, EOT, X, <)
+#if before X is blank
+#all is finished
+(EOT, -, F1, -, >)
+(F1, X, F, -, -)

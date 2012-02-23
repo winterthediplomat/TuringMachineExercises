@@ -1,0 +1,27 @@
+#exercise 2 match 10
+
+(0, 01, 0, 01, >)
+(0, +, 1, +, >)
+(1, -, sub, -, <)
+(1, 01+, 1, 01+, >)
+
+#add
+(add, 0, 0, 1, -)
+(add, 1, add, 0, <)
+(add, -, 0, 1, -)
+
+#sub
+(sub, 1, goPlus, 0, -)
+(sub, 0, sub, 1, <)
+(goPlus, 01, goPlus, 01, <)
+(goPlus, +, clean, +, >)
+(clean, 0, clean, +, >)
+(clean, -, clearPlus, -, <)
+(clean, 1, goFirstPlus, 1, <)
+
+(goFirstPlus, +, goFirstPlus, +, <)
+(goFirstPlus, 01, add, 01, -)
+
+#clearPlus
+(clearPlus, +, clearPlus, -, <)
+(clearPlus, 01, add, 01, -)
