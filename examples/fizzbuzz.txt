@@ -1,0 +1,103 @@
+# FizzBuzz
+# Give a list of numbers, separated from Xs, and
+# this "simple" program for Turing Machine
+# will, for each number, delete the first number of the list
+# and write a word at the end of the tape (at least, the written part).
+# If the number is divisible by 3, it will write "FIZZ"
+# If the number is divisible by 5, it will write "BUZZ"
+# If the number is divisible by 3 and 5, it will write FIZZBUZZ
+# else, it will write "P". It's not required in the real FizzBuzz.
+# example: 
+# > 6x5x4x30
+# > ==>
+# > FIZZxBUZZxPxFIZZBUZZ
+
+#START
+#if read a number, we go to read the whole number in order to check
+# it's divisible by 3 or not.
+#if the read character is X, we have a new number in the list,
+# so we just delete it and start again.
+#if read F, B or P (something that's not a number or X), we need 
+# a "makeup operation": the deletion of the X at the last character of the tape
+(0, [^0..9x], goCancelX, [^0..9x], >)
+(0, [0..9], checkDiv3, [0..9], -)
+(0, x, 0, -, >)
+
+#DIVISIBILITY BY 3
+#checking if the number is divisible by 3
+#note that the remainder is kept in the state checkDiv3{012}
+#if we read the whole number and we're in state checkDiv30
+# (=> the number is divisible by 3) we have to write FIZZ
+#if not in that state, we have to check divisibility by 5
+(checkDiv3, [0..9], checkDiv3[0120120120], [0..9], >)
+(checkDiv30, [0..9], checkDiv3[0120120120], [0..9], >)
+(checkDiv31, [0..9], checkDiv3[1201201201], [0..9], >)
+(checkDiv32, [0..9], checkDiv3[2012012012], [0..9], >)
+(checkDiv30, [^0..9], goFizz, [^0..9], -)
+(checkDiv3{12}, [^0..9], goCheckDiv5, [^0..9], <)
+
+#WRITING FIZZ
+#we just go at the end of the tape and write FIZZ,
+# one letter at the time.
+#when we're done writing, we _must_ check divisibility by 5.
+# Note that we use a cool trick to write FIZZBUZZ: we first check ($number%3) and 
+# write FIZZ, then check ($number%5) and write BUZZ, without separating it with X.
+# this way we get the whole word with no work
+(goFizz, [^-], goFizz, [^-], >)
+(goFizz, -, Fizz, -, -)
+(Fizz, -, FizzF, F, >)
+(FizzF, -, FizzI, I, >)
+(FizzI, -, FizzZ, Z, >)
+(FizzZ, -, goCheckDiv5, Z, <)
+
+#DIVISIBILITY BY 5
+#checking if the number is divisible by 5
+#Note that we're going to the first character of the tape
+# in order to delete numbers as we check them, and store them
+# in the moreCheckDiv5{0..9} state.
+#We recognize the number if finished when don't read a number anymore.
+#If divisible by 5 (last digit is 0 or 5), we have to write BUZZ
+#If not, we have to write P
+(goCheckDiv5, [^-], goCheckDiv5, [^-], <)
+(goCheckDiv5, -, moreCheckDiv5, -, >)
+(moreCheckDiv5, [0..9], moreCheckDiv5[0..9], -, >)
+(moreCheckDiv5[0..9], {0..9}, moreCheckDiv5{0..9}, -, >)
+(moreCheckDiv5{05}, [^0..9], goBuzz, [^0..9], >)
+(moreCheckDiv5{12346789}, [^0..9], goWriteP, [^0..9], >)
+
+#WRITING BUZZ
+#we just go at the end of the tape and write BUZZ,
+# one letter at the time.
+#when we're done writing, we add an X to the end.
+(goBuzz, [^-], goBuzz, [^-], >)
+(goBuzz, -, Buzz, -, -)
+(Buzz, -, BuzzB, B, >)
+(BuzzB, -, BuzzU, U, >)
+(BuzzU, -, BuzzZ, Z, >)
+(BuzzZ, -, goWriteX, Z, -)
+
+#WRITING P
+#we always defaults to write P if not ($number%5), but
+# we don't know if ($number%3). We still have a way to check it
+# at runtime: if the last character is X, ($number%3 == false).
+# in that case, we have to write P [transictioning to state goWriteX_yep]
+#we always end this part going to write X. 
+(goWriteP, [^-], goWriteP, [^-], >)
+(goWriteP, -, checkP, -, <)
+(checkP, X, goWriteX_yep, X, >)
+(checkP, [^x], goWriteX, [^x], >)
+(goWriteX_yep, -, goWriteX, P, -)
+ 
+#WRITE X
+#Boilerplate code to write X and go back to the
+# first character and start the program again 
+(goWriteX, [^-], goWriteX, [^-], >)
+(goWriteX, -, goStart, X, <)
+(goStart, [^-], goStart, [^-], <)
+(goStart, -, 0, -, >)
+
+#CANCEL X
+#Boilerplate code to delete the last X in the tape.
+(goCancelX, [^-], goCancelX, [^-], >)
+(goCancelX, -, cancelX, -, <)
+(cancelX, x, stop, -, -)
