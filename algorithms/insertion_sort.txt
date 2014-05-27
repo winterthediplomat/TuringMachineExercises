@@ -1,0 +1,66 @@
+# Insertion Sort
+# a naive implementation that 
+# uses an X to separate
+# the "sorted" portion of the array
+# from the "unsorted" part.
+# time cost: best case O(n), worst case O(n^2)
+# space cost: O(1), we just need the space for an additional X
+
+#START
+# 312 -> 3X12
+# 13X2 -> 132X
+#if a number, we save the number and move the X
+# one element ahead.
+#if blank, we're done: we need to clean the X.
+(0, [0..9], copy[0..9], X, <)
+(0, -, clean, -, <)
+
+#COPY
+#we read a number from the state "0".
+#in case we reach the start of the tape, we just leave
+# the number there and go to the X, ready to read another item.
+#if we read X, it's time to sort.
+(copy[0..9], -, goNextItem, [0..9], >)
+(copy[0..9], X, sort[0..9], [0..9], <)
+
+#SORT
+#here, we abuse a cool feature of the Cisternino's implementation:
+# first, we define an huge set of rules
+# and then we overwrite a subset of them, in order to
+# not come back to the X symbol and swap items.
+#Pratically:
+#for each sortN, for each read character R, we go back to X,  write R and go right
+#in some cases (if the N in sortN is lower than the number
+# we're reading right now), we overwrite the old rule.
+#we just swap things, btw.
+(sort[0..9], {0..9-}, goNextItem, {0..9-}, >)
+(sort0, {0..9}, swap{0..9}, 0, >)
+(sort1, {1..9}, swap{1..9}, 1, >)
+(sort2, {2..9}, swap{2..9}, 2, >)
+(sort3, {3..9}, swap{3..9}, 3, >)
+(sort4, {4..9}, swap{4..9}, 4, >)
+(sort5, {5..9}, swap{5..9}, 5, >)
+(sort6, {6..9}, swap{6..9}, 6, >)
+(sort7, {7..9}, swap{7..9}, 7, >)
+(sort8, {8..9}, swap{8..9}, 8, >)
+(sort9, {9..9}, swap{9..9}, 9, >)
+
+#SWAP
+#boilerplate code, just to swap items
+# and going back to the sort.
+#this part makes this implementation a bit inefficient
+# in terms of writes.
+(swap[0..9], {0..9}, back, [0..9], <)
+(back, [0..9], sort[0..9], [0..9], <)
+
+#GONEXTITEM
+#boilerplate code, just to reach the X symbol
+# and start the whole sorting procedure again
+(goNextItem, {^X}, goNextItem, {^X}, >)
+(goNextItem, X, 0, X, >)
+
+#CLEAN
+#removing the X when we don't have other items
+# to insert into the sorted array. It was the result
+# of a previous computation cycle.
+(clean, X, FINISH, -, -)
